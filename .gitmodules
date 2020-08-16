@@ -16,3 +16,6 @@
 [submodule "crc32c/crc32c"]
 	path = crc32c/crc32c
 	url = https://github.com/google/crc32c.git
+[submodule "openssl/openssl"]
+	path = openssl/openssl
+	url = https://github.com/openssl/openssl.git
