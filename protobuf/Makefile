@@ -3,6 +3,7 @@ BUILDDIR=build
 INSTALLDIR=/usr/local/opt/protobuf
 BUILDTYPE=Release
 CMGENERATOR=Ninja
+ZLIB_ROOT=/usr/local/opt/zlib
 
 CC=clang
 CXX=clang++
@@ -17,8 +18,8 @@ install: build
 build: config
 	cmake --build $(BUILDDIR)
 
-config:
-	cmake -G$(CMGENERATOR) -B$(BUILDDIR) -S$(PROTOBUFDIR) \
+config: $(ZLIB_ROOT)
+	cmake -Wno-dev -G$(CMGENERATOR) -B$(BUILDDIR) -S$(PROTOBUFDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DCMAKE_C_COMPILER=$(CC) \
@@ -29,7 +30,8 @@ config:
 		-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS)" \
 		-Dprotobuf_BUILD_TESTS=OFF \
 		-DBUILD_SHARED_LIBS=TRUE \
-		-DWITH_PROTOC=TRUE
+		-DWITH_PROTOC=TRUE \
+		-DZLIB_ROOT=$(ZLIB_ROOT)
 
 clean:
 	rm -rf $(BUILDDIR)
