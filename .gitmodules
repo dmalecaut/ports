@@ -10,3 +10,9 @@
 [submodule "snappy/snappy"]
 	path = snappy/snappy
 	url = https://github.com/google/snappy.git
+[submodule "leveldb/leveldb"]
+	path = leveldb/leveldb
+	url = https://github.com/google/leveldb.git
+[submodule "crc32c/crc32c"]
+	path = crc32c/crc32c
+	url = https://github.com/google/crc32c.git
