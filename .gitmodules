@@ -1,3 +1,6 @@
 [submodule "llvm/llvm-project"]
 	path = llvm/llvm-project
 	url = https://github.com/llvm/llvm-project
+[submodule "protobuf/protobuf"]
+	path = protobuf/protobuf
+	url = https://github.com/protocolbuffers/protobuf.git
