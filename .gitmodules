@@ -22,3 +22,6 @@
 [submodule "abseil-cpp/abseil-cpp"]
 	path = abseil-cpp/abseil-cpp
 	url = https://github.com/abseil/abseil-cpp.git
+[submodule "re2/re2"]
+	path = re2/re2
+	url = https://github.com/google/re2.git
