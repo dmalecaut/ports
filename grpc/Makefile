@@ -2,7 +2,6 @@ include ../config.mk
 
 PROJECT = grpc
 SRCDIR  = grpc
-DEPENDS = abseil-cpp protobuf re2 c-ares openssl zlib
 MODULES = \
 	$(INSTALLROOTDIR)/abseil-cpp \
 	$(INSTALLROOTDIR)/protobuf \

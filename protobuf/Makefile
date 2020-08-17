@@ -2,7 +2,6 @@ include ../config.mk
 
 PROJECT  = protobuf
 SRCDIR   = protobuf/cmake
-DEPENDS  = zlib
 MODULES  = $(INSTALLROOTDIR)/zlib
 
 INSTALLCMD = cmake --install $(BUILDDIR)

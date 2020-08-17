@@ -14,7 +14,6 @@ UPDATESTEP    = $(PROJECT)_update
 DEINSTALLSTEP = $(PROJECT)_deinstall
 CLEANSTEP     = $(PROJECT)_clean
 
-DEPENDS ?=
 
 all:
 
@@ -28,11 +27,9 @@ update: $(UPDATESTEP)
 
 deinstall: $(DEINSTALLSTEP)
 
-depends: $(DEPENDS)
-
 clean: $(CLEANSTEP)
 
-$(PROJECT): $(DEPENDS) $(INSTALLSTEP)
+$(PROJECT): $(INSTALLSTEP)
 
 $(INSTALLSTEP): $(BUILDSTEP)
 	$(INSTALLCMD)

@@ -1,9 +1,9 @@
-LLVMDIR=llvm-project/llvm
-BUILDDIR=build
-INSTALLDIR=/usr/local/opt/llvm
-BUILDTYPE=Release
-CMGENERATOR=Ninja
-LLVMMODULES= \
+include ../config.mk
+
+PROJECT = llvm
+SRCDIR  = llvm-project/llvm
+
+LLVMMODULES = \
 	clang \
 	clang-tools-extra \
 	libcxx \
@@ -13,19 +13,14 @@ LLVMMODULES= \
 	compiler-rt \
 	lld \
 	polly
-LLVMMODLIST!=echo $(LLVMMODULES) | sed -e 's/ /;/g'
+LLVMMODLIST != echo $(LLVMMODULES) | sed -e 's/ /;/g'
 
-install: build
-	cmake --install $(BUILDDIR)
-
-build: config
-	cmake --build $(BUILDDIR)
-
-config:
-	cmake -G$(CMGENERATOR) -B$(BUILDDIR) -S$(LLVMDIR) \
+INSTALLCMD = cmake --install $(BUILDDIR)
+BUILDCMD   = cmake --build $(BUILDDIR)
+CONFIGCMD  = \
+	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DLLVM_ENABLE_PROJECTS="$(LLVMMODLIST)"
 
-clean:
-	rm -rf $(BUILDDIR)
+include ../build.mk

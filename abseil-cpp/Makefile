@@ -1,41 +1,12 @@
-PROJECT=abseil-cpp
-PROJCMAKEDIR=abseil-cpp
-BUILDDIR=build
-INSTALLDIR=/usr/local/opt/$(PROJECT)
-BUILDTYPE=Release
-CMGENERATOR=Ninja
+include ../config.mk
 
-CC=clang
-CXX=clang++
-CXXFLAGS=-stdlib=libc++
-LDFLAGS=-lc++ -lc++abi
+PROJECT  = abseil-cpp
+SRCDIR   = abseil-cpp
 
-INSTALLSTEP=$(PROJECT)_install
-BUILDSTEP=$(PROJECT)_build
-CONFIGSTEP=$(PROJECT)_config
-DEINSTALLSTEP=$(PROJECT)_deinstall
-CLEANSTEP=$(PROJECT)_clean
-
-all:
-
-install: $(INSTALLSTEP)
-
-build: $(BUILDSTEP)
-
-config: $(CONFIGSTEP)
-
-deinstall: $(DEINSTALLSTEP)
-
-clean: $(CLEANSTEP)
-
-$(INSTALLSTEP): build
-	cmake --install $(BUILDDIR)
-
-$(BUILDSTEP): config
-	cmake --build $(BUILDDIR)
-
-$(CONFIGSTEP):
-	cmake -Wno-dev -G$(CMGENERATOR) -B$(BUILDDIR) -S$(PROJCMAKEDIR) \
+INSTALLCMD = cmake --install $(BUILDDIR)
+BUILDCMD   = cmake --build $(BUILDDIR)
+CONFIGCMD  = \
+	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DCMAKE_C_COMPILER=$(CC) \
@@ -50,8 +21,4 @@ $(CONFIGSTEP):
 		-DABSL_USE_GOOGLETEST_HEAD=OFF \
 		-DABSL_RUN_TESTS=OFF
 
-$(DEINSTALLSTEP):
-	rm -rf $(INSTALLDIR)
-
-$(CLEANSTEP):
-	rm -rf $(BUILDDIR)
+include ../build.mk

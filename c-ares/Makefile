@@ -1,42 +1,12 @@
-PROJECT=c-ares
-PROJCMAKEDIR=c-ares
-BUILDDIR=build
-INSTALLROOTDIR=/usr/local/opt
-INSTALLDIR=$(INSTALLROOTDIR)/$(PROJECT)
-BUILDTYPE=Release
-CMGENERATOR=Ninja
+include ../config.mk
 
-CC=clang
+PROJECT  = c-ares
+SRCDIR   = c-ares
 
-INSTALLSTEP=$(PROJECT)_install
-BUILDSTEP=$(PROJECT)_build
-CONFIGSTEP=$(PROJECT)_config
-UPDATESTEP=$(PROJECT)_update
-DEINSTALLSTEP=$(PROJECT)_deinstall
-CLEANSTEP=$(PROJECT)_clean
-
-all:
-
-install: $(INSTALLSTEP)
-
-build: $(BUILDSTEP)
-
-config: $(CONFIGSTEP)
-
-update: $(UPDATESTEP)
-
-deinstall: $(DEINSTALLSTEP)
-
-clean: $(CLEANSTEP)
-
-$(INSTALLSTEP): $(BUILDSTEP)
-	cmake --install $(BUILDDIR)
-
-$(BUILDSTEP): $(CONFIGSTEP)
-	cmake --build $(BUILDDIR)
-
-$(CONFIGSTEP):
-	cmake -Wno-dev -G$(CMGENERATOR) -B$(BUILDDIR) -S$(PROJCMAKEDIR) \
+INSTALLCMD = cmake --install $(BUILDDIR)
+BUILDCMD   = cmake --build $(BUILDDIR)
+CONFIGCMD  = \
+	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DCMAKE_C_COMPILER=$(CC) \
@@ -48,12 +18,4 @@ $(CONFIGSTEP):
 		-DCARES_BUILD_CONTAINER_TESTS=OFF \
 		-DCARES_BUILD_TOOLS=ON
 
-$(UPDATESTEP):
-	git submodule update --remote
-
-
-$(DEINSTALLSTEP):
-	rm -rf $(INSTALLDIR)
-
-$(CLEANSTEP):
-	rm -rf $(BUILDDIR)
+include ../build.mk

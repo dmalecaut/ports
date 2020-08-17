@@ -1,24 +1,12 @@
-SNAPPYDIR=snappy
-BUILDDIR=build
-INSTALLDIR=/usr/local/opt/snappy
-BUILDTYPE=Release
-CMGENERATOR=Ninja
+include ../config.mk
 
-CC=clang
-CXX=clang++
-CXXFLAGS=-stdlib=libc++
-LDFLAGS=-lc++ -lc++abi
+PROJECT  = snappy
+SRCDIR   = snappy
 
-all:
-
-install: build
-	cmake --install $(BUILDDIR)
-
-build: config
-	cmake --build $(BUILDDIR)
-
-config:
-	cmake -Wno-dev -G$(CMGENERATOR) -B$(BUILDDIR) -S$(SNAPPYDIR) \
+INSTALLCMD = cmake --install $(BUILDDIR)
+BUILDCMD   = cmake --build $(BUILDDIR)
+CONFIGCMD  = \
+	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DCMAKE_C_COMPILER=$(CC) \
@@ -31,5 +19,4 @@ config:
 		-DSNAPPY_BUILD_TESTS=OFF \
 		-DSNAPPY_INSTALL=$(INSTALLDIR)
 
-clean:
-	rm -rf $(BUILDDIR)
+include ../build.mk

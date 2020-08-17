@@ -1,25 +1,12 @@
-PROJECT=leveldb
-PROJCMAKEDIR=leveldb
-BUILDDIR=build
-INSTALLDIR=/usr/local/opt/$(PROJECT)
-BUILDTYPE=Release
-CMGENERATOR=Ninja
+include ../config.mk
 
-CC=clang
-CXX=clang++
-CXXFLAGS=-stdlib=libc++
-LDFLAGS=-lc++ -lc++abi
+PROJECT  = crc32c
+SRCDIR   = crc32c
 
-all:
-
-install: build
-	cmake --install $(BUILDDIR)
-
-build: config
-	cmake --build $(BUILDDIR)
-
-config:
-	cmake -Wno-dev -G$(CMGENERATOR) -B$(BUILDDIR) -S$(PROJCMAKEDIR) \
+INSTALLCMD = cmake --install $(BUILDDIR)
+BUILDCMD   = cmake --build $(BUILDDIR)
+CONFIGCMD  = \
+	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DCMAKE_C_COMPILER=$(CC) \
@@ -33,5 +20,4 @@ config:
 		-DLEVELDB_BUILD_BENCHMARKS=OFF \
 		-DLEVELDB_INSTALL=ON
 
-clean:
-	rm -rf $(BUILDDIR)
+include ../build.mk
