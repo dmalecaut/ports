@@ -1,54 +1,22 @@
-PROJECT=grpc
-PROJCMAKEDIR=grpc
-BUILDDIR=build
-INSTALLROOTDIR=/usr/local/opt
-INSTALLDIR=$(INSTALLROOTDIR)/$(PROJECT)
-BUILDTYPE=Release
-CMGENERATOR=Ninja
-CMMODULES= \
+include ../config.mk
+
+PROJECT = grpc
+SRCDIR  = grpc
+DEPENDS = abseil-cpp protobuf re2 c-ares openssl zlib
+MODULES = \
 	$(INSTALLROOTDIR)/abseil-cpp \
 	$(INSTALLROOTDIR)/protobuf \
 	$(INSTALLROOTDIR)/re2 \
 	$(INSTALLROOTDIR)/c-ares \
 	$(INSTALLROOTDIR)/openssl \
 	$(INSTALLROOTDIR)/zlib
-CMMODULES!=echo $(CMMODULES) | sed -e 's/ /;/g'
+MODULES != echo $(MODULES) | sed -e 's/ /;/g'
 
-CC=clang
-CXX=clang++
-CXXFLAGS=-stdlib=libc++
-LDFLAGS=-lc++ -lc++abi
-
-INSTALLSTEP=$(PROJECT)_install
-BUILDSTEP=$(PROJECT)_build
-CONFIGSTEP=$(PROJECT)_config
-UPDATESTEP=$(PROJECT)_update
-DEINSTALLSTEP=$(PROJECT)_deinstall
-CLEANSTEP=$(PROJECT)_clean
-
-all:
-
-install: $(INSTALLSTEP)
-
-build: $(BUILDSTEP)
-
-config: $(CONFIGSTEP)
-
-update: $(UPDATESTEP)
-
-deinstall: $(DEINSTALLSTEP)
-
-clean: $(CLEANSTEP)
-
-$(INSTALLSTEP): $(BUILDSTEP)
-	cmake --install $(BUILDDIR)
-
-$(BUILDSTEP): $(CONFIGSTEP)
-	cmake --build $(BUILDDIR)
-
-$(CONFIGSTEP):
-	cmake -Wno-dev -G$(CMGENERATOR) -B$(BUILDDIR) -S$(PROJCMAKEDIR) \
-		-DCMAKE_PREFIX_PATH="$(CMMODULES)" \
+INSTALLCMD = cmake --install $(BUILDDIR)
+BUILDCMD   = cmake --build $(BUILDDIR)
+CONFIGCMD  = \
+	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
+		-DCMAKE_PREFIX_PATH="$(MODULES)" \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DCMAKE_C_COMPILER=$(CC) \
@@ -69,12 +37,4 @@ $(CONFIGSTEP):
 		-DgRPC_SSL_PROVIDER=package \
 		-DgRPC_ZLIB_PROVIDER=package
 
-$(UPDATESTEP):
-	git submodule update --remote
-
-
-$(DEINSTALLSTEP):
-	rm -rf $(INSTALLDIR)
-
-$(CLEANSTEP):
-	rm -rf $(BUILDDIR)
+include ../build.mk

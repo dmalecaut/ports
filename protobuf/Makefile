@@ -1,47 +1,15 @@
-PROJECT=protobuf
-PROJCMAKEDIR=protobuf/cmake
-BUILDDIR=build
-INSTALLROOTDIR=/usr/local/opt
-INSTALLDIR=$(INSTALLROOTDIR)/$(PROJECT)
-BUILDTYPE=Release
-CMGENERATOR=Ninja
-CMMODULES=$(INSTALLROOTDIR)/zlib
+include ../config.mk
 
-CC=clang
-CXX=clang++
-CXXFLAGS=-stdlib=libc++
-LDFLAGS=-lc++ -lc++abi
+PROJECT  = protobuf
+SRCDIR   = protobuf/cmake
+DEPENDS  = zlib
+MODULES  = $(INSTALLROOTDIR)/zlib
 
-INSTALLSTEP=$(PROJECT)_install
-BUILDSTEP=$(PROJECT)_build
-CONFIGSTEP=$(PROJECT)_config
-UPDATESTEP=$(PROJECT)_update
-DEINSTALLSTEP=$(PROJECT)_deinstall
-CLEANSTEP=$(PROJECT)_clean
-
-all:
-
-install: $(INSTALLSTEP)
-
-build: $(BUILDSTEP)
-
-config: $(CONFIGSTEP)
-
-update: $(UPDATESTEP)
-
-deinstall: $(DEINSTALLSTEP)
-
-clean: $(CLEANSTEP)
-
-$(INSTALLSTEP): $(BUILDSTEP)
-	cmake --install $(BUILDDIR)
-
-$(BUILDSTEP): $(CONFIGSTEP)
-	cmake --build $(BUILDDIR)
-
-$(CONFIGSTEP):
-	cmake -Wno-dev -G$(CMGENERATOR) -B$(BUILDDIR) -S$(PROJCMAKEDIR) \
-		-DCMAKE_PREFIX_PATH="$(CMMODULES)" \
+INSTALLCMD = cmake --install $(BUILDDIR)
+BUILDCMD   = cmake --build $(BUILDDIR)
+CONFIGCMD  = \
+	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
+		-DCMAKE_PREFIX_PATH="$(MODULES)" \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DCMAKE_C_COMPILER=$(CC) \
@@ -54,12 +22,4 @@ $(CONFIGSTEP):
 		-DBUILD_SHARED_LIBS=TRUE \
 		-DWITH_PROTOC=TRUE
 
-$(UPDATESTEP):
-	git submodule update --init --remote $(PROJECT)
-
-
-$(DEINSTALLSTEP):
-	rm -rf $(INSTALLDIR)
-
-$(CLEANSTEP):
-	rm -rf $(BUILDDIR)
+include ../build.mk
