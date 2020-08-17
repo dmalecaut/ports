@@ -1,7 +1,7 @@
 include ../config.mk
 
-PROJECT  = crc32c
-SRCDIR   = crc32c
+PROJECT  = re2
+SRCDIR   = re2
 
 INSTALLCMD = cmake --install $(BUILDDIR)
 BUILDCMD   = cmake --build $(BUILDDIR)

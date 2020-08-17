@@ -1,25 +1,15 @@
-ZLIBDIR=zlib
-BUILDDIR=build
-INSTALLDIR=/usr/local/opt/zlib
-BUILDTYPE=Release
-CMGENERATOR=Ninja
+include ../config.mk
 
-CC=clang
+PROJECT  = zlib
+SRCDIR   = zlib
 
-all:
-
-install: build
-	cmake --install $(BUILDDIR)
-
-build: config
-	cmake --build $(BUILDDIR)
-
-config:
-	cmake -G$(CMGENERATOR) -B$(BUILDDIR) -S$(ZLIBDIR) \
+INSTALLCMD = cmake --install $(BUILDDIR)
+BUILDCMD   = cmake --build $(BUILDDIR)
+CONFIGCMD  = \
+	cmake -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DCMAKE_C_COMPILER=$(CC) \
 		-DBUILD_SHARED_LIBS=TRUE
 
-clean:
-	rm -rf $(BUILDDIR)
+include ../build.mk

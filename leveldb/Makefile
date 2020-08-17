@@ -1,7 +1,7 @@
 include ../config.mk
 
-PROJECT  = crc32c
-SRCDIR   = crc32c
+PROJECT  = leveldb
+SRCDIR   = leveldb
 
 INSTALLCMD = cmake --install $(BUILDDIR)
 BUILDCMD   = cmake --build $(BUILDDIR)
