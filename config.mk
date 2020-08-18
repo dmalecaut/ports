@@ -1,5 +1,7 @@
+SHELL = /bin/tcsh
+
 # Directory specifiers
-BUILDDIR      = build
+BUILDDIR       = build
 INSTALLROOTDIR = $(HOME)/opt
 INSTALLDIR     = $(INSTALLROOTDIR)/$(PROJECT)
 

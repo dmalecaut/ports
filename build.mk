@@ -14,6 +14,11 @@ UPDATESTEP    = $(PROJECT)_update
 DEINSTALLSTEP = $(PROJECT)_deinstall
 CLEANSTEP     = $(PROJECT)_clean
 
+# Environment
+PATH            := $(INSTALLROOTDIR)/*/bin:$(PATH)
+LD_LIBRARY_PATH := $(INSTALLROOTDIR)/*/lib:$(LD_LIBRARY_PATH)
+LIBRARY_PATH    := $(INSTALLROOTDIR)/*/lib:$(LIBRARY_PATH)
+CPATH       		:= $(INSTALLROOTDIR)/*/include:$(CPATH)
 
 all:
 
@@ -29,6 +34,8 @@ deinstall: $(DEINSTALLSTEP)
 
 clean: $(CLEANSTEP)
 
+env: $(PROJECT)_env
+
 $(PROJECT): $(INSTALLSTEP)
 
 $(INSTALLSTEP): $(BUILDSTEP)
@@ -40,8 +47,17 @@ $(BUILDSTEP): $(CONFIGSTEP)
 $(CONFIGSTEP):
 	$(CONFIGCMD)
 
+$(UPDATESTEP):
+	$(UPDATECMD)
+
 $(DEINSTALLSTEP):
 	$(DEINSTALLCMD)
 
 $(CLEANSTEP):
 	$(CLEANCMD)
+
+$(PROJECT)_env:
+	@echo "PATH = $(PATH)"
+	@echo "LD_LIBRARY_PATH = $(LD_LIBRARY_PATH)"
+	@echo "LIBRARY_PATH = $(LIBRARY_PATH)"
+	@echo "CPATH = $(CPATH)"

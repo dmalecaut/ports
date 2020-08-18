@@ -1,19 +1,12 @@
-PROJECT=openssl
-PROJDIR=openssl
-BUILDDIR=build
-INSTALLDIR=/usr/local/opt/$(PROJECT)
+include ../config.mk
 
-all:
+PROJECT  = openssl
+SRCDIR   = openssl
 
-install: build
-	$(MAKE) -C $(BUILDDIR) install
-
-build: config
-	$(MAKE) -C $(BUILDDIR)
-
-config:
-	mkdir -p $(BUILDDIR); cd $(BUILDDIR); ../$(PROJDIR)/config \
+INSTALLCMD = $(MAKE) -C $(BUILDDIR) install
+BUILDCMD   = $(MAKE) -C $(BUILDDIR)
+CONFIGCMD  = \
+	mkdir -p $(BUILDDIR); cd $(BUILDDIR); ../$(SRCDIR)/config \
 		--prefix=$(INSTALLDIR) --openssldir=$(INSTALLDIR) shared -Wl,-rpath,$(INSTALLDIR)/lib
 
-clean:
-	rm -rf $(BUILDDIR)
+include ../build.mk
