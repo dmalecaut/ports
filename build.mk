@@ -2,7 +2,7 @@
 NSTALLCMD    ?=
 BUILDCMD     ?=
 CONFIGCMD    ?=
-UPDATECMD    ?= git submodule update --remote $(ROOTDIR)
+UPDATECMD    ?= git submodule update --init --remote $(ROOTDIR)
 DEINSTALLCMD ?= rm -rf $(INSTALLDIR)
 CLEANCMD     ?= rm -rf $(BUILDDIR)
 
