@@ -1,11 +1,11 @@
 include ../config.mk
 
-PROJECT  = zlib
-SRCDIR   = zlib
+PROJECT := zlib
+SRCDIR  := zlib
 
-INSTALLCMD = cmake --install $(BUILDDIR)
-BUILDCMD   = cmake --build $(BUILDDIR)
-CONFIGCMD  = \
+INSTALLCMD := cmake --install $(BUILDDIR)
+BUILDCMD   := cmake --build $(BUILDDIR)
+CONFIGCMD  := \
 	cmake -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \

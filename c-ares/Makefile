@@ -1,12 +1,13 @@
 include ../config.mk
 
-PROJECT  = c-ares
-SRCDIR   = c-ares
+PROJECT := c-ares
+ROODIR  := c-ares
+SRCDIR  := c-ares
 
-INSTALLCMD = cmake --install $(BUILDDIR)
-BUILDCMD   = cmake --build $(BUILDDIR)
-CONFIGCMD  = \
-	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
+INSTALLCMD := cmake --install $(BUILDDIR)
+BUILDCMD   := cmake --build $(BUILDDIR)
+CONFIGCMD  := \
+	cmake -WnO-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
 		-DCMAKE_C_COMPILER=$(CC) \

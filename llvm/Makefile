@@ -1,9 +1,10 @@
 include ../config.mk
 
-PROJECT = llvm
-SRCDIR  = llvm-project/llvm
+PROJECT := llvm
+ROOTDIR := llvm-project
+SRCDIR  := $(ROOTDIR)/llvm
 
-LLVMMODULES = \
+LLVMMODULES := \
 	clang \
 	clang-tools-extra \
 	libcxx \
@@ -15,9 +16,9 @@ LLVMMODULES = \
 	polly
 LLVMMODLIST != echo $(LLVMMODULES) | sed -e 's/ /;/g'
 
-INSTALLCMD = cmake --install $(BUILDDIR)
-BUILDCMD   = cmake --build $(BUILDDIR)
-CONFIGCMD  = \
+INSTALLCMD := cmake --install $(BUILDDIR)
+BUILDCMD   := cmake --build $(BUILDDIR)
+CONFIGCMD  := \
 	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \

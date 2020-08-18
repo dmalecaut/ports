@@ -1,11 +1,12 @@
 include ../config.mk
 
-PROJECT  = crc32c
-SRCDIR   = crc32c
+PROJECT := crc32c
+ROOTDIR := crc32c
+SRCDIR  := crc32c
 
-INSTALLCMD = cmake --install $(BUILDDIR)
-BUILDCMD   = cmake --build $(BUILDDIR)
-CONFIGCMD  = \
+INSTALLCMD := cmake --install $(BUILDDIR)
+BUILDCMD   := cmake --build $(BUILDDIR)
+CONFIGCMD  := \
 	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \

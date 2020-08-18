@@ -1,7 +1,8 @@
 include ../config.mk
 
-PROJECT  = re2
-SRCDIR   = re2
+PROJECT := re2
+ROOTDIR := re2
+SRCDIR  := re2
 
 INSTALLCMD = cmake --install $(BUILDDIR)
 BUILDCMD   = cmake --build $(BUILDDIR)

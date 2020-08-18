@@ -1,11 +1,12 @@
 include ../config.mk
 
-PROJECT  = abseil-cpp
-SRCDIR   = abseil-cpp
+PROJECT  := abseil-cpp
+ROOTDIR  := abseil-cpp
+SRCDIR   := abseil-cpp
 
-INSTALLCMD = cmake --install $(BUILDDIR)
-BUILDCMD   = cmake --build $(BUILDDIR)
-CONFIGCMD  = \
+INSTALLCMD := cmake --install $(BUILDDIR)
+BUILDCMD   := cmake --build $(BUILDDIR)
+CONFIGCMD  := \
 	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \

@@ -1,8 +1,10 @@
 include ../config.mk
 
-PROJECT = grpc
-SRCDIR  = grpc
-MODULES = \
+PROJECT := grpc
+ROOTDIR := grpc
+SRCDIR  := grpc
+
+MODULES := \
 	$(INSTALLROOTDIR)/abseil-cpp \
 	$(INSTALLROOTDIR)/protobuf \
 	$(INSTALLROOTDIR)/re2 \
@@ -11,9 +13,9 @@ MODULES = \
 	$(INSTALLROOTDIR)/zlib
 MODULES != echo $(MODULES) | sed -e 's/ /;/g'
 
-INSTALLCMD = cmake --install $(BUILDDIR)
-BUILDCMD   = cmake --build $(BUILDDIR)
-CONFIGCMD  = \
+INSTALLCMD := cmake --install $(BUILDDIR)
+BUILDCMD   := cmake --build $(BUILDDIR)
+CONFIGCMD  := \
 	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
 		-DCMAKE_PREFIX_PATH="$(MODULES)" \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
