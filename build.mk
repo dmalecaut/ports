@@ -18,7 +18,7 @@ CLEANSTEP     = $(PROJECT)_clean
 PATH            := $(INSTALLROOTDIR)/*/bin:$(PATH)
 LD_LIBRARY_PATH := $(INSTALLROOTDIR)/*/lib:$(LD_LIBRARY_PATH)
 LIBRARY_PATH    := $(INSTALLROOTDIR)/*/lib:$(LIBRARY_PATH)
-CPATH       		:= $(INSTALLROOTDIR)/*/include:$(CPATH)
+CPATH						:= $(INSTALLROOTDIR)/*/include:$(CPATH)
 
 all:
 
