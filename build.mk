@@ -15,7 +15,6 @@ DEINSTALLSTEP = $(PROJECT)_deinstall
 CLEANSTEP     = $(PROJECT)_clean
 
 # Environment
-LIBS            != find $(INSTALLROOTDIR) -type d -depth 1
 LIBSBIN         != printf '%s/bin:' $(LIBS)
 LIBSLIB         != printf '%s/lib:' $(LIBS)
 LIBSINCLUDE     != printf '%s/include:' $(LIBS)

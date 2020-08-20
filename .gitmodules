@@ -34,3 +34,9 @@
 [submodule "double-conversion/double-conversion"]
 	path = double-conversion/double-conversion
 	url = https://github.com/google/double-conversion.git
+[submodule "arrow/arrow"]
+	path = arrow/arrow
+	url = https://github.com/apache/arrow.git
+[submodule "gflags/gflags"]
+	path = gflags/gflags
+	url = https://github.com/gflags/gflags.git

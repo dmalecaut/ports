@@ -1,8 +1,8 @@
 include ../config.mk
 
-PROJECT := grpc
-ROOTDIR := grpc
-SRCDIR  := grpc
+PROJECT := gflags
+ROOTDIR := gflags
+SRCDIR  := gflags
 
 MODULES != printf '%s;' $(LIBS)
 
@@ -19,16 +19,6 @@ CONFIGCMD  := \
 		-DCMAKE_STATIC_LINKER_FLAGS="$(LDFLAGS)" \
 		-DCMAKE_SHARED_LINKER_FLAGS="$(LDFLAGS)" \
 		-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS)" \
-		-DBUILD_SHARED_LIBS=TRUE \
-		-DgRPC_BUILD_TESTS=OFF \
-		-DgRPC_BUILD_CODEGEN=ON \
-		-DgRPC_BUILD_CSHARP_EXT=OFF \
-		-DgRPC_BACKWARDS_COMPATIBILITY_MODE=OFF \
-		-DgRPC_ABSL_PROVIDER=package \
-		-DgRPC_PROTOBUF_PROVIDER=package \
-		-DgRPC_RE2_PROVIDER=package \
-		-DgRPC_CARES_PROVIDER=package \
-		-DgRPC_SSL_PROVIDER=package \
-		-DgRPC_ZLIB_PROVIDER=package
+		-DBUILD_SHARED_LIBS=TRUE
 
 include ../build.mk
