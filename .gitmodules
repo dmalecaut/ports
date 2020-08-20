@@ -31,3 +31,6 @@
 [submodule "c-ares/c-ares"]
 	path = c-ares/c-ares
 	url = https://github.com/c-ares/c-ares.git
+[submodule "double-conversion/double-conversion"]
+	path = double-conversion/double-conversion
+	url = https://github.com/google/double-conversion.git
