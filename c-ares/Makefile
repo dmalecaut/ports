@@ -1,7 +1,7 @@
 include ../config.mk
 
 PROJECT := c-ares
-ROODIR  := c-ares
+ROOTDIR := c-ares
 SRCDIR  := c-ares
 
 INSTALLCMD := cmake --install $(BUILDDIR)

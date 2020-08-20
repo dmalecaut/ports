@@ -1,6 +1,7 @@
 include ../config.mk
 
 PROJECT := snappy
+ROOTDIR := snappy
 SRCDIR  := snappy
 
 INSTALLCMD := cmake --install $(BUILDDIR)

@@ -1,5 +1,5 @@
 # Step commands
-NSTALLCMD    ?=
+INSTALLCMD   ?=
 BUILDCMD     ?=
 CONFIGCMD    ?=
 UPDATECMD    ?= git submodule update --init --remote $(ROOTDIR)
@@ -15,12 +15,20 @@ DEINSTALLSTEP = $(PROJECT)_deinstall
 CLEANSTEP     = $(PROJECT)_clean
 
 # Environment
-PATH            := $(INSTALLROOTDIR)/*/bin:$(PATH)
-LD_LIBRARY_PATH := $(INSTALLROOTDIR)/*/lib:$(LD_LIBRARY_PATH)
-LIBRARY_PATH    := $(INSTALLROOTDIR)/*/lib:$(LIBRARY_PATH)
-CPATH           := $(INSTALLROOTDIR)/*/include:$(CPATH)
+LIBS            != find $(INSTALLROOTDIR) -type d -depth 1
+LIBSBIN         != printf '%s/bin:' $(LIBS)
+LIBSLIB         != printf '%s/lib:' $(LIBS)
+LIBSINCLUDE     != printf '%s/include:' $(LIBS)
+PATH            := $(LIBSBIN)$(PATH)
+LD_LIBRARY_PATH := $(LIBSLIB)$(LD_LIBRARY_PATH)
+LIBRARY_PATH    := $(LIBSLIB)$(LIBRARY_PATH)
+CPATH           := $(LIBSINCLUDE)$(CPATH)
 
-all:
+ENVPREFIX = \
+	PATH=$(PATH) \
+	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH) \
+	LIBRARY_PATH=$(LIBRARY_PATH) \
+	CPATH=$(CPATH)
 
 install: $(INSTALLSTEP)
 
@@ -34,18 +42,16 @@ deinstall: $(DEINSTALLSTEP)
 
 clean: $(CLEANSTEP)
 
-env: $(PROJECT)_env
-
 $(PROJECT): $(INSTALLSTEP)
 
 $(INSTALLSTEP): $(BUILDSTEP)
 	$(INSTALLCMD)
 
 $(BUILDSTEP): $(CONFIGSTEP)
-	$(BUILDCMD)
+	$(ENVPREFIX) $(BUILDCMD)
 
 $(CONFIGSTEP):
-	$(CONFIGCMD)
+	$(ENVPREFIX) $(CONFIGCMD)
 
 $(UPDATESTEP):
 	$(UPDATECMD)
@@ -55,9 +61,3 @@ $(DEINSTALLSTEP):
 
 $(CLEANSTEP):
 	$(CLEANCMD)
-
-$(PROJECT)_env:
-	@echo "PATH = $(PATH)"
-	@echo "LD_LIBRARY_PATH = $(LD_LIBRARY_PATH)"
-	@echo "LIBRARY_PATH = $(LIBRARY_PATH)"
-	@echo "CPATH = $(CPATH)"

@@ -1,6 +1,7 @@
 include ../config.mk
 
 PROJECT := zlib
+ROOTDIR := zlib
 SRCDIR  := zlib
 
 INSTALLCMD := cmake --install $(BUILDDIR)
