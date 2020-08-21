@@ -8,17 +8,14 @@ TARGETS := \
 	gflags \
 	grpc \
 	leveldb \
-	openssl \
 	protobuf \
 	re2 \
-	snappy \
-	zlib
+	snappy
 
 all: $(TARGETS)
 
 arrow: grpc gflags
-grpc: abseil-cpp protobuf re2 c-ares openssl
-protobuf: zlib
+grpc: abseil-cpp protobuf re2 c-ares
 leveldb: crc32c snappy
 
 $(TARGETS):
