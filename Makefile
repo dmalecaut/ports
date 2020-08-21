@@ -1,18 +1,18 @@
 include config.mk
 
 TARGETS := \
-	arrow \
 	abseil-cpp \
+	arrow \
 	c-ares \
 	crc32c \
+	gflags \
 	grpc \
 	leveldb \
 	openssl \
 	protobuf \
 	re2 \
 	snappy \
-	zlib \
-	gflags
+	zlib
 
 all: $(TARGETS)
 
