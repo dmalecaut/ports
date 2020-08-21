@@ -1,3 +1,5 @@
+include config.mk
+
 TARGETS := \
 	arrow \
 	abseil-cpp \
