@@ -19,12 +19,14 @@ LIBSBIN         != printf '%s/bin:' $(LIBS)
 LIBSLIB         != printf '%s/lib:' $(LIBS)
 LIBSINCLUDE     != printf '%s/include:' $(LIBS)
 PATH            := $(LIBSBIN)$(PATH)
+LD_RUN_PATH     := $(LIBSLIB)$(LD_RUN_PATH)
 LD_LIBRARY_PATH := $(LIBSLIB)$(LD_LIBRARY_PATH)
 LIBRARY_PATH    := $(LIBSLIB)$(LIBRARY_PATH)
 CPATH           := $(LIBSINCLUDE)$(CPATH)
 
 ENVPREFIX = \
 	PATH=$(PATH) \
+	LD_RUN_PATH=$(LD_RUN_PATH) \
 	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH) \
 	LIBRARY_PATH=$(LIBRARY_PATH) \
 	CPATH=$(CPATH)

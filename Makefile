@@ -14,7 +14,7 @@ TARGETS := \
 
 all: $(TARGETS)
 
-arrow: grpc gflags
+arrow: grpc gflags snappy
 grpc: abseil-cpp protobuf re2 c-ares
 leveldb: crc32c snappy
 
