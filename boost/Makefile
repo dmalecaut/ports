@@ -5,7 +5,7 @@ ROOTDIR := boost
 SRCDIR  := boost
 
 INSTALLCMD := \
-	git submodule update --init --recursive --remote $(SRCDIR) \
-	&& ./$(SRCDIR)/bootstrap.sh --prefix=$(INSTALLDIR)
+	git submodule update --init --recursive $(SRCDIR) \
+	&& cd $(SRCDIR) && ./bootstrap.sh --prefix=$(INSTALLDIR) && ./b2
 
 include ../build.mk
