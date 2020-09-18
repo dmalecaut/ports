@@ -10,7 +10,8 @@ TARGETS := \
 	leveldb \
 	protobuf \
 	re2 \
-	snappy
+	snappy \
+	boost
 
 all: $(TARGETS)
 
