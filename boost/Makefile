@@ -4,13 +4,9 @@ PROJECT := boost
 ROOTDIR := boost
 SRCDIR  := boost
 
-CONFIGCMD  := \
-	git submodule update --init --recursive $(SRCDIR) \
-	&& cd $(SRCDIR) && ./bootstrap.sh --prefix=$(INSTALLDIR)
-
-BUILDCMD := \
-	cd $(SRCDIR) && ./b2
-
+UPDATECMD  := git submodule update --init --recursive $(ROOTDIR)
+CONFIGCMD  := cd $(SRCDIR) && ./bootstrap.sh --prefix=$(INSTALLDIR)
+BUILDCMD   := cd $(SRCDIR) && ./b2
 INSTALLCMD := \
 	mkdir -p $(INSTALLDIR) && mkdir -p $(INSTALLDIR)/include \
 	&& cp -r $(SRCDIR)/stage/lib $(INSTALLDIR) \

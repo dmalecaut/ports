@@ -31,3 +31,15 @@
 [submodule "boost/boost"]
 	path = boost/boost
 	url = https://github.com/boostorg/boost.git
+[submodule "armadillo/armadillo-code"]
+	path = armadillo/armadillo-code
+	url = https://gitlab.com/conradsnicta/armadillo-code.git
+[submodule "ensmallen/ensmallen"]
+	path = ensmallen/ensmallen
+	url = https://github.com/mlpack/ensmallen.git
+[submodule "mlpack/mlpack"]
+	path = mlpack/mlpack
+	url = https://github.com/mlpack/mlpack.git
+[submodule "lua/lua"]
+	path = lua/lua
+	url = https://github.com/lua/lua.git
