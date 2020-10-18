@@ -1,0 +1,18 @@
+include ../config.mk
+
+PROJECT := rapidjson
+ROOTDIR := rapidjson
+SRCDIR  := rapidjson
+
+INSTALLCMD := cmake --install $(BUILDDIR)
+BUILDCMD   := cmake --build $(BUILDDIR)
+CONFIGCMD  := \
+	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
+		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
+		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
+		-DRAPIDJSON_BUILD_DOC=OFF \
+		-DRAPIDJSON_BUILD_EXAMPLES=OFF \
+		-DRAPIDJSON_BUILD_TESTS=OFF \
+		-DRAPIDJSON_HAS_STDSTRING=ON
+
+include ../build.mk
