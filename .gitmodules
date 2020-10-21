@@ -46,3 +46,6 @@
 [submodule "rapidjson/rapidjson"]
 	path = rapidjson/rapidjson
 	url = https://github.com/Tencent/rapidjson.git
+[submodule "catch2/Catch2"]
+	path = catch2/Catch2
+	url = https://github.com/catchorg/Catch2.git
