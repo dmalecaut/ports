@@ -49,3 +49,6 @@
 [submodule "catch2/Catch2"]
 	path = catch2/Catch2
 	url = https://github.com/catchorg/Catch2.git
+[submodule "spdlog/spdlog"]
+	path = spdlog/spdlog
+	url = https://github.com/gabime/spdlog.git

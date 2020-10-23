@@ -12,10 +12,11 @@ TARGETS := \
 	re2 \
 	snappy \
 	boost \
+	catch2 \
 	armadillo \
 	ensmallen \
 	mlpack \
-	lua
+	spdlog
 
 all: $(TARGETS)
 
