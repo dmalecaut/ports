@@ -6,17 +6,18 @@ TARGETS := \
 	c-ares \
 	crc32c \
 	gflags \
-	grpc \
 	leveldb \
 	protobuf \
 	re2 \
 	snappy \
 	boost \
-	catch2 \
+	spdlog \
+	rapidjson \
+	# grpc \
 	armadillo \
 	ensmallen \
 	mlpack \
-	spdlog
+	catch2 \
 
 all: $(TARGETS)
 
@@ -26,7 +27,7 @@ leveldb: crc32c snappy
 mlpack: armadillo ensmallen
 
 $(TARGETS):
-	$(MAKE) -C $@ update install clean
+	$(MAKE) -C $@ update install
 
 clean:
 	rm -rf */$(BUILDDIR)
