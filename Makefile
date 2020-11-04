@@ -13,10 +13,11 @@ TARGETS := \
 	boost \
 	spdlog \
 	rapidjson \
-	# grpc \
+	taskflow \
 	armadillo \
 	ensmallen \
 	mlpack \
+	# grpc \
 	catch2 \
 
 all: $(TARGETS)
