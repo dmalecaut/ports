@@ -8,4 +8,4 @@ INSTALLDIR      = $(INSTALLROOTDIR)/$(PROJECT)
 # Misc build configuration
 GENERATOR := Ninja
 BUILDTYPE := Release
-LIBS      != find $(INSTALLROOTDIR) -type d -depth 1
+LIBS      != find $(INSTALLROOTDIR) -maxdepth 1 -type d
