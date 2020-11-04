@@ -21,6 +21,7 @@ TARGETS := \
 	catch2 \
 
 all: $(TARGETS)
+	cp env.sh $(INSTALLROOTDIR)
 
 arrow: grpc gflags snappy
 grpc: abseil-cpp protobuf re2 c-ares
