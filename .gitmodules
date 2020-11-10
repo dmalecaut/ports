@@ -1,57 +1,83 @@
 [submodule "protobuf/protobuf"]
 	path = protobuf/protobuf
-	url = https://github.com/protocolbuffers/protobuf.git
+  url = https://github.com/protocolbuffers/protobuf.git
+  branch = 3.13.x
 [submodule "snappy/snappy"]
 	path = snappy/snappy
-	url = https://github.com/google/snappy.git
+  url = https://github.com/google/snappy.git
+  branch = master
 [submodule "leveldb/leveldb"]
 	path = leveldb/leveldb
-	url = https://github.com/google/leveldb.git
+  url = https://github.com/google/leveldb.git
+  branch = master
 [submodule "crc32c/crc32c"]
 	path = crc32c/crc32c
-	url = https://github.com/google/crc32c.git
+  url = https://github.com/google/crc32c.git
+  branch = master
 [submodule "abseil-cpp/abseil-cpp"]
 	path = abseil-cpp/abseil-cpp
-	url = https://github.com/abseil/abseil-cpp.git
+  url = https://github.com/abseil/abseil-cpp.git
+  branch = master
 [submodule "re2/re2"]
 	path = re2/re2
-	url = https://github.com/google/re2.git
+  url = https://github.com/google/re2.git
+  branch = master
 [submodule "grpc/grpc"]
 	path = grpc/grpc
-	url = https://github.com/grpc/grpc.git
+  url = https://github.com/grpc/grpc.git
+  branch = v1.33.x
 [submodule "c-ares/c-ares"]
 	path = c-ares/c-ares
-	url = https://github.com/c-ares/c-ares.git
+  url = https://github.com/c-ares/c-ares.git
+  branch = master
 [submodule "arrow/arrow"]
 	path = arrow/arrow
-	url = https://github.com/apache/arrow.git
+  url = https://github.com/apache/arrow.git
+  branch = master
 [submodule "gflags/gflags"]
 	path = gflags/gflags
-	url = https://github.com/gflags/gflags.git
+  url = https://github.com/gflags/gflags.git
+  branch = master
 [submodule "boost/boost"]
 	path = boost/boost
-	url = https://github.com/boostorg/boost.git
+  url = https://github.com/boostorg/boost.git
+  branch = develop
 [submodule "armadillo/armadillo-code"]
 	path = armadillo/armadillo-code
-	url = https://gitlab.com/conradsnicta/armadillo-code.git
+  url = https://gitlab.com/conradsnicta/armadillo-code.git
+  branch = 10.2.x
 [submodule "ensmallen/ensmallen"]
 	path = ensmallen/ensmallen
-	url = https://github.com/mlpack/ensmallen.git
+  url = https://github.com/mlpack/ensmallen.git
+  branch = master
 [submodule "mlpack/mlpack"]
 	path = mlpack/mlpack
-	url = https://github.com/mlpack/mlpack.git
+  url = https://github.com/mlpack/mlpack.git
+  branch = master
 [submodule "lua/lua"]
 	path = lua/lua
-	url = https://github.com/lua/lua.git
+  url = https://github.com/lua/lua.git
+  branch = master
 [submodule "rapidjson/rapidjson"]
 	path = rapidjson/rapidjson
-	url = https://github.com/Tencent/rapidjson.git
+  url = https://github.com/Tencent/rapidjson.git
+  branch = master
 [submodule "catch2/Catch2"]
 	path = catch2/Catch2
-	url = https://github.com/catchorg/Catch2.git
+  url = https://github.com/catchorg/Catch2.git
+  branch = devel
 [submodule "spdlog/spdlog"]
 	path = spdlog/spdlog
-	url = https://github.com/gabime/spdlog.git
+  url = https://github.com/gabime/spdlog.git
+  branch = master
 [submodule "taskflow/taskflow"]
 	path = taskflow/taskflow
-	url = https://github.com/taskflow/taskflow.git
+  url = https://github.com/taskflow/taskflow.git
+  branch = master
+[submodule "thrift/thrift"]
+	path = thrift/thrift
+  url = https://github.com/apache/thrift.git
+  branch = master
+[submodule "cereal/cereal"]
+	path = cereal/cereal
+	url = https://github.com/USCiLab/cereal.git

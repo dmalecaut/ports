@@ -16,17 +16,21 @@ TARGETS := \
 	taskflow \
 	armadillo \
 	ensmallen \
+	cereal \
 	mlpack \
-	# grpc \
 	catch2 \
+	grpc \
+	#thrift \
 
 all: $(TARGETS)
 	cp env.sh $(INSTALLROOTDIR)
 
-arrow: grpc gflags snappy
+arrow: grpc gflags snappy thrift
 grpc: abseil-cpp protobuf re2 c-ares
 leveldb: crc32c snappy
-mlpack: armadillo ensmallen
+mlpack: armadillo ensmallen cereal
+ensmallen: armadillo
+cereal: boost
 
 $(TARGETS):
 	$(MAKE) -C $@ update install
