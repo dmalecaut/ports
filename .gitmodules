@@ -82,3 +82,6 @@
 	path = cereal/cereal
   url = https://github.com/USCiLab/cereal.git
   branch = master
+[submodule "date/date"]
+	path = date/date
+	url = https://github.com/HowardHinnant/date.git

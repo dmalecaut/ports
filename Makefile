@@ -20,6 +20,7 @@ TARGETS := \
 	mlpack \
 	catch2 \
 	grpc \
+	date \
 	#thrift \
 
 all: $(TARGETS)

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 PORTSTRAP_HOME=$(cd $(dirname "${BASH_SOURCE[0]}") >/dev/null 2>&1 && pwd)
 PORTSTRAP_BIN=$(printf '%s:' $(find $PORTSTRAP_HOME -maxdepth 2 -type d -name bin))
