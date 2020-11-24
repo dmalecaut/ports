@@ -85,3 +85,6 @@
 [submodule "date/date"]
 	path = date/date
 	url = https://github.com/HowardHinnant/date.git
+[submodule "fmt/fmt"]
+	path = fmt/fmt
+	url = https://github.com/fmtlib/fmt.git
