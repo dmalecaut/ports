@@ -1,18 +1,15 @@
 include ../config.mk
 
-PROJECT := snappy
-ROOTDIR := snappy
-SRCDIR  := snappy
+PROJECT := date
+ROOTDIR := date
+SRCDIR  := date
 
 INSTALLCMD := cmake --install $(BUILDDIR)
 BUILDCMD   := cmake --build $(BUILDDIR)
 CONFIGCMD  := \
 	cmake -Wno-dev -G$(GENERATOR) -B$(BUILDDIR) -S$(SRCDIR) \
-		-DCMAKE_CXX_COMPILER=g++ \
 		-DCMAKE_INSTALL_PREFIX=$(INSTALLDIR) \
 		-DCMAKE_BUILD_TYPE=$(BUILDTYPE) \
-		-DBUILD_SHARED_LIBS=TRUE \
-		-DSNAPPY_BUILD_TESTS=OFF \
-		-DSNAPPY_INSTALL=$(INSTALLDIR)
+		-DBUILD_SHARED_LIBS=TRUE
 
 include ../build.mk

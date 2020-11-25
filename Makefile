@@ -21,6 +21,7 @@ TARGETS := \
 	catch2 \
 	grpc \
 	date \
+	fmt \
 	#thrift \
 
 all: $(TARGETS)
