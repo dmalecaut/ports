@@ -22,13 +22,14 @@ TARGETS := \
 	grpc \
 	date \
 	fmt \
+	#openssl \
 	#thrift \
 
 all: $(TARGETS)
 	cp env.sh $(INSTALLROOTDIR)
 
 arrow: grpc gflags snappy thrift
-grpc: abseil-cpp protobuf re2 c-ares
+grpc: abseil-cpp protobuf re2 c-ares openssl
 leveldb: crc32c snappy
 mlpack: armadillo ensmallen cereal
 ensmallen: armadillo

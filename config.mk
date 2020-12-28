@@ -2,7 +2,7 @@ SHELL := /bin/sh
 
 # Directory specifiers
 BUILDDIR       := build
-INSTALLROOTDIR := $(HOME)/opt
+INSTALLROOTDIR := $(HOME)/portstrap
 INSTALLDIR      = $(INSTALLROOTDIR)/$(PROJECT)
 
 # Misc build configuration

@@ -88,3 +88,7 @@
 [submodule "fmt/fmt"]
 	path = fmt/fmt
 	url = https://github.com/fmtlib/fmt.git
+[submodule "openssl/openssl"]
+	path = openssl/openssl
+	url = https://github.com/openssl/openssl.git
+  	branch = OpenSSL_1_1_1-stable
