@@ -22,7 +22,8 @@ TARGETS := \
 	grpc \
 	date \
 	fmt \
-	#openssl \
+	openssl \
+	caf \
 	#thrift \
 
 all: $(TARGETS)

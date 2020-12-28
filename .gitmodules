@@ -45,7 +45,7 @@
 [submodule "armadillo/armadillo-code"]
 	path = armadillo/armadillo-code
   url = https://gitlab.com/conradsnicta/armadillo-code.git
-  branch = 10.2.x
+  branch = 10.1.x
 [submodule "ensmallen/ensmallen"]
 	path = ensmallen/ensmallen
   url = https://github.com/mlpack/ensmallen.git
@@ -92,3 +92,6 @@
 	path = openssl/openssl
 	url = https://github.com/openssl/openssl.git
   	branch = OpenSSL_1_1_1-stable
+[submodule "caf/caf"]
+	path = caf/caf
+	url = https://github.com/actor-framework/actor-framework.git
