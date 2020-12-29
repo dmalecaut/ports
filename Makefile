@@ -24,7 +24,8 @@ TARGETS := \
 	fmt \
 	openssl \
 	caf \
-	#thrift \
+	thrift \
+	# leave this here
 
 all: $(TARGETS)
 	cp env.sh $(INSTALLROOTDIR)
