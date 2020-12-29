@@ -37,9 +37,9 @@ ensmallen: armadillo
 cereal: boost
 
 $(TARGETS):
-	$(MAKE) -C $@ update install
+	$(MAKE) -C $@ install
 
 clean:
-	rm -rf */$(BUILDDIR)
+	for t in $(TARGETS); do $(MAKE) -C $$t clean; done
 
 .PHONY: $(TARGETS)
