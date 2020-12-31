@@ -36,6 +36,7 @@ leveldb: crc32c snappy
 mlpack: armadillo ensmallen cereal
 ensmallen: armadillo
 cereal: boost
+thrift: boost
 
 $(TARGETS):
 	$(MAKE) -C $@ install
