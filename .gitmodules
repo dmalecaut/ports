@@ -95,3 +95,6 @@
 [submodule "caf/caf"]
 	path = caf/caf
 	url = https://github.com/actor-framework/actor-framework.git
+[submodule "utf8proc/utf8proc"]
+	path = utf8proc/utf8proc
+	url = https://github.com/JuliaStrings/utf8proc.git
