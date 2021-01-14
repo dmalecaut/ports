@@ -98,3 +98,6 @@
 [submodule "utf8proc/utf8proc"]
 	path = utf8proc/utf8proc
 	url = https://github.com/JuliaStrings/utf8proc.git
+[submodule "jemalloc/jemalloc"]
+	path = jemalloc/jemalloc
+	url = https://github.com/jemalloc/jemalloc

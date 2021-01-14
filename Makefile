@@ -25,12 +25,13 @@ TARGETS := \
 	openssl \
 	caf \
 	thrift \
+	utf8proc \
 	# leave this here
 
 all: $(TARGETS)
 	cp env.sh $(INSTALLROOTDIR)
 
-arrow: grpc gflags snappy thrift
+arrow: grpc gflags snappy thrift utf8proc
 grpc: abseil-cpp protobuf re2 c-ares openssl
 leveldb: crc32c snappy
 mlpack: armadillo ensmallen cereal
