@@ -9,5 +9,6 @@ RUN apt-get update && apt-get install -y \
     git
 ADD . /portstrap-repo
 RUN make -C /portstrap-repo PREFIX=/ \
-    && rm -rf /portstrap-repo
-ENTRYPOINT ["/portstrap/env.sh"]
+    && rm -rf /portstrap-repo \
+    && echo "source /portstrap/env.sh" >> ~/.bashrc
+ENTRYPOINT ["/bin/bash"]
