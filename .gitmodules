@@ -101,3 +101,6 @@
 [submodule "jemalloc/jemalloc"]
 	path = jemalloc/jemalloc
 	url = https://github.com/jemalloc/jemalloc
+[submodule "caf_incubator/incubator"]
+	path = caf_incubator/incubator
+	url = https://github.com/actor-framework/incubator.git

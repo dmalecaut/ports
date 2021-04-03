@@ -24,6 +24,7 @@ TARGETS := \
 	fmt \
 	openssl \
 	caf \
+	caf_incubator \
 	thrift \
 	utf8proc \
 	# leave this here
@@ -38,6 +39,7 @@ mlpack: armadillo ensmallen cereal
 ensmallen: armadillo
 cereal: boost
 thrift: boost
+caf_incubator: caf
 
 $(TARGETS):
 	$(MAKE) -C $@ install
